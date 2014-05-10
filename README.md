@@ -7,6 +7,8 @@ I created this project to document the steps I took to setup a back-office appli
 
 ### Essential gems
 
+* [paper_trail](https://github.com/airblade/paper_trail)
+
 ### Testing and debugging gems
 
 ### Principles
