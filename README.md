@@ -9,6 +9,7 @@ I created this project to document the steps I took to setup a back-office appli
 
 * [paper_trail](https://github.com/airblade/paper_trail)
 * [rails_admin](https://github.com/sferik/rails_admin)
+* [devise](https://github.com/plataformatec/devise)
 
 ### Testing and debugging gems
 

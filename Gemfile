@@ -41,3 +41,5 @@ gem 'spring',        group: :development
 gem 'paper_trail', '~> 3.0.1'
 
 gem 'rails_admin', '~> 0.6'
+
+gem 'devise', '~> 3.2'
