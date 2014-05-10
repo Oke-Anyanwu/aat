@@ -39,3 +39,5 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'paper_trail', '~> 3.0.1'
+
+gem 'rails_admin', '~> 0.6'
