@@ -45,3 +45,7 @@ gem 'rails_admin', '~> 0.6'
 gem 'devise', '~> 3.2'
 
 gem 'foundation-rails', '~> 5.2'
+
+group :development, :test do
+  gem 'pry'
+end

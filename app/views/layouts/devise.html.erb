@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= yield :title %> | Control Panel</title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="row" id="main-content">
+      <div class="large-6 large-offset-3 columns">
+        <% unless notice.nil? %>
+          <div data-alert class="alert-box alert-info">
+            <a href="#" class="close">&times;</a>
+            <%= notice %>
+          </div>
+        <% end %>
+        <% unless alert.nil? %>
+          <div data-alert class="alert-box alert-error">
+            <a href="#" class="close">&times;</a>
+            <%= alert %>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+%nav.top-bar{"data-options" => "is_hover: false", "data-topbar" => ""}
+  %ul.title-area
+    %li.name
+      %h1
+        = link_to 'Another Admin Tool (Employees)', employees_path
+  %section.top-bar-section
+    / Left Nav Section
+    %ul.left
+      %li
+        = link_to 'Events', "/employees/events"
+    %ul.right
+      %li.has-dropdown
+        %a{:href => "#"}= current_employee.email
+        %ul.dropdown.user-profile-dropdown
+          %li= link_to 'Update Profile', employee_path(current_employee)
+          %li= link_to 'Sign Out', destroy_employee_session_path, :method => :delete
