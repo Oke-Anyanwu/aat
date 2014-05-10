@@ -43,3 +43,5 @@ gem 'paper_trail', '~> 3.0.1'
 gem 'rails_admin', '~> 0.6'
 
 gem 'devise', '~> 3.2'
+
+gem 'foundation-rails', '~> 5.2'
