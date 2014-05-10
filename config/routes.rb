@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :employees
   devise_for :superusers
   mount RailsAdmin::Engine => '/meta', as: 'rails_admin'
   # The priority is based upon order of creation: first created -> highest priority.
