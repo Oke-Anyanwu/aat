@@ -1,3 +1,19 @@
 = content_for :title, "Employees"
 
 %h3 Employees
+
+%table
+  %thead
+    %tr
+      %th Last Name
+      %th First Name
+      %th Email
+  %tbody
+    - @employees.each do |e|
+      %tr
+        %td
+          = e.last_name
+        %td
+          = e.first_name
+        %td
+          = e.email

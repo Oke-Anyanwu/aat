@@ -29,3 +29,11 @@ end
 Then(/^I should see "(.*?)"$/) do |content|
   expect(page).to have_content(content)
 end
+
+When(/^I visit the Employees' home page$/) do
+  visit employees_path
+end
+
+Then(/^I should see my contact information$/) do
+  expect(page).to have_content(@employee.last_name)
+end
