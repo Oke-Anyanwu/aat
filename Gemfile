@@ -49,3 +49,10 @@ gem 'foundation-rails', '~> 5.2'
 group :development, :test do
   gem 'pry'
 end
+
+group :test do
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'rspec-rails', require: false
+end
