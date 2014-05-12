@@ -11,7 +11,7 @@ class EmployeesController < ApplicationController
   end
 
   def update
-    if @employee.update_attributes(employee_params)
+    if @employee.update(employee_params)
       flash[:notice] = "Profile updated."
       redirect_to employee_path(@employee)
     else
