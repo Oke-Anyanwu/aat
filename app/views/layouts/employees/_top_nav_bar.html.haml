@@ -6,7 +6,7 @@
   %section.top-bar-section
     / Left Nav Section
     %ul.left
-      %li
+      %li{class: current_active_page_css_class(employees_events_path) }
         = link_to 'Events', "/employees/events"
     %ul.right
       %li.has-dropdown

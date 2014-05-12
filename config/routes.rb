@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   devise_for :superusers
 
   devise_for :employees
+  namespace :employees do
+    resources :events
+  end
   resources :employees
 
   root "employees#index"

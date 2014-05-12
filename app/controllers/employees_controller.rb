@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+  layout 'employees'
   before_action :authenticate_employee!
   before_action :set_employee, only: [:show, :update]
 
