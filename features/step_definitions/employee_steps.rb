@@ -37,3 +37,20 @@ end
 Then(/^I should see my contact information$/) do
   expect(page).to have_content(@employee.last_name)
 end
+
+Given(/^there is a "(.*?)" on "(.*?)"$/) do |title, start|
+  @event = Event.create(title: title, start: Date.parse(start))
+end
+
+When(/^I visit the Employees' events page$/) do
+  visit employees_events_path
+end
+
+Given(/^the date is "(.*?)"$/) do |date|
+  @date = date
+  Timecop.travel @date
+end
+
+Then(/^I should see "(.*?)" as an event on the calendar$/) do |title|
+  expect(page).to have_content(title)
+end

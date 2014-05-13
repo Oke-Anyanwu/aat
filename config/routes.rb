@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :employees
   namespace :employees do
+    get "events/monthly" => "monthly_events#index"
     resources :events
   end
   resources :employees

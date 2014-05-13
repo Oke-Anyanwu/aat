@@ -55,6 +55,8 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'rspec-rails', require: false
+  gem 'cucumber-timecop'
+  gem 'selenium-webdriver'
 end
 
 gem 'fullcalendar-rails', '~> 1.6'
