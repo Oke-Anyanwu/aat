@@ -56,3 +56,5 @@ group :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'rspec-rails', require: false
 end
+
+gem 'fullcalendar-rails', '~> 1.6'
