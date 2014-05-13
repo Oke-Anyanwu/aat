@@ -9,11 +9,4 @@
       %th First Name
       %th Email
   %tbody
-    - @employees.each do |e|
-      %tr
-        %td
-          = e.last_name
-        %td
-          = e.first_name
-        %td
-          = e.email
+    = render @employees
