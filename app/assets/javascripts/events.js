@@ -4,7 +4,7 @@ $(function() {
     header: { left: null, center: 'title' },
     events: function(start, end, callback) {
       $.ajax({
-        url: "/employees/events/monthly.json",
+        url: "/monthly_events.json",
         dataType: 'json',
         data: {
           start: Math.round(start.getTime() / 1000),

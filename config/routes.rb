@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   devise_for :superusers
 
   devise_for :employees
-  namespace :employees do
-    get "events/monthly" => "monthly_events#index"
-    resources :events
-  end
   resources :employees
+
+  resources :events
+
+  get "monthly_events" => "monthly_events#index", as: 'monthly_events'
 
   root "employees#index"
 end

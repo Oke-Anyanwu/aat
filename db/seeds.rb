@@ -7,3 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Superuser.create(email: 'superuser@example.com', password: 'password', password_confirmation: 'password')
+
+Employee.create(email: 'ace@example.com', password: 'password',
+                password_confirmation: 'password', first_name: 'Ace', middle_name: 'Jones', last_name: "O'Base")
+
+Event.create(title: "Code review", start: Date.parse("May 9, 2014"))

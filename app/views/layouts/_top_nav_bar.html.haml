@@ -2,12 +2,12 @@
   %ul.title-area
     %li.name
       %h1
-        = link_to 'Another Admin Tool (Employees)', employees_path
+        = link_to 'Another Admin Tool', employees_path
   %section.top-bar-section
     / Left Nav Section
     %ul.left
-      %li{class: current_active_page_css_class(employees_events_path) }
-        = link_to 'Events', "/employees/events"
+      %li{class: current_active_page_css_class(events_path) }
+        = link_to 'Events', events_path
     %ul.right
       %li.has-dropdown
         %a{:href => "#"}= current_employee.email

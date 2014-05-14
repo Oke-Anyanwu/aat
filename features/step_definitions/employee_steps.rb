@@ -43,7 +43,7 @@ Given(/^there is a "(.*?)" on "(.*?)"$/) do |title, start|
 end
 
 When(/^I visit the Employees' events page$/) do
-  visit employees_events_path
+  visit events_path
 end
 
 Given(/^the date is "(.*?)"$/) do |date|
