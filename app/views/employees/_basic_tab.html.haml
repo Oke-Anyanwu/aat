@@ -1,0 +1,9 @@
+= form_for @employee do |f|
+  %div
+    = f.label :first_name, "First Name"
+    = f.text_field :first_name
+    = f.label :middle_name, "Middle Name"
+    = f.text_field :middle_name
+    = f.label :last_name, "Last Name"
+    = f.text_field :last_name
+    = f.submit "Save", class: "button"

@@ -54,3 +54,19 @@ end
 Then(/^I should see "(.*?)" as an event on the calendar$/) do |title|
   expect(page).to have_content(title)
 end
+
+Given(/^I have (\d+) leave credits$/) do |credits|
+  @employee.leave_account = LeaveAccount.new(credits: credits)
+end
+
+When(/^I click on my Leaves tab$/) do
+  within("#employee-tab") do
+    click_link "Leaves"
+  end
+end
+
+Then(/^I should see (\d+) leave credits on my Leaves tab$/) do |arg1|
+  within("#leaves") do
+    expect(page).to have_content "Leave Credits: 2.0"
+  end
+end
