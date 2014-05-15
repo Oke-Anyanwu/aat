@@ -1,0 +1,8 @@
+= form_for([@employee, @leave], remote: true) do |f|
+  %fieldset
+    %legend File a Leave
+    = f.label :leave_date, "Date"
+    = f.text_field :leave_date
+    = f.label :reason, "Reason"
+    = f.text_field :reason
+    = f.submit "Send", class: "button"

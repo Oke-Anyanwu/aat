@@ -5,4 +5,5 @@ class Employee < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :leave_account
+  has_many :leaves
 end

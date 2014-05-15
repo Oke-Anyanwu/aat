@@ -70,3 +70,27 @@ Then(/^I should see (\d+) leave credits on my Leaves tab$/) do |arg1|
     expect(page).to have_content "Leave Credits: 2.0"
   end
 end
+
+Given(/^I am on my Leaves tab$/) do
+  within("#employee-tab") do
+    click_link "Leaves"
+  end
+end
+
+When(/^I file a leave on "(.*?)"$/) do |date|
+  formatted_date = Date.parse(date).strftime("%m/%d/%Y")
+  fill_in "Date", with: formatted_date
+  fill_in "Reason", with: "vacation"
+  click_button "Send"
+end
+
+Then(/^I should see "(.*?)" on my leave requests$/) do |date|
+  within("#leaves-table") do
+    expect(page).to have_content(date)
+  end
+end
+
+Then(/^(.*?) should be blank$/) do |field|
+  val = find_field(field).value
+  expect(val).to be_blank
+end

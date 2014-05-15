@@ -1,0 +1,9 @@
+%table#leaves-table
+  %thead
+    %tr
+      %th Date
+      %th Reason
+  %tbody
+    - leaves = @employee.leaves
+    - if leaves.length > 0
+      = render partial: "leaves/leave", collection: @employee.leaves

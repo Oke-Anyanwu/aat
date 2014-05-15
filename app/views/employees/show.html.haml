@@ -1,6 +1,6 @@
 %h3 My Profile
 
-%dl#employee-tab{ class: "tabs", data: { tab: true } }
+%dl#employee-tab{ class: "tabs", data: { tab: true, options: "deep_linking: true" } }
   %dd{ class: "active" }
     %a{ href: "#basic" } Basic Info
   %dd
@@ -11,5 +11,3 @@
     = render "basic_tab"
   .content#leaves
     = render "leaves_tab"
-
-

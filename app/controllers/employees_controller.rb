@@ -7,6 +7,7 @@ class EmployeesController < ApplicationController
   end
 
   def show
+    @leave = Leave.new
   end
 
   def update
