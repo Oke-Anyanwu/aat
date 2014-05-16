@@ -3,6 +3,8 @@ class Leave < ActiveRecord::Base
 
   has_paper_trail
 
+  enum status: [:pending, :approved, :rejected]
+
   def requester
     LeaveRequester.new(self.employee_first_name, self.employee_last_name, self.employee_email)
   end

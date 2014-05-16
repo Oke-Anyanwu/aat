@@ -4,4 +4,11 @@
   %td
     = leave.leave_date.strftime("%b %-d, %Y")
   %td
-    Approve | Reject
+    - if leave.pending?
+      = link_to 'Approve', leave_path(leave, status: "approve"), method: :put
+      |
+      = link_to 'Reject', leave_path(leave, status: "reject"), method: :put
+    - elsif leave.approved?
+      Approved
+    - else
+      Rejected

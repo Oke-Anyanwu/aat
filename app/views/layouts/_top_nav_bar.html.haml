@@ -8,6 +8,8 @@
     %ul.left
       %li{class: current_active_page_css_class(events_path) }
         = link_to 'Events', events_path
+      %li{class: current_active_page_css_class(leaves_path) }
+        = link_to 'Leaves', leaves_path
     %ul.right
       %li.has-dropdown
         %a{:href => "#"}= current_employee.email
