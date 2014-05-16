@@ -6,4 +6,6 @@ class Employee < ActiveRecord::Base
 
   has_one :leave_account
   has_many :leaves
+
+  has_paper_trail
 end
