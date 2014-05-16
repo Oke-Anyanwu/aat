@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def user_for_paper_trail
-    request.env["PATH_INFO"] =~ /(employee|events)/ ? current_employee : current_user
+    request.env["PATH_INFO"] =~ /(employee|events)/ ? current_employee : current_superuser
   end
 
   protected
