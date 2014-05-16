@@ -124,10 +124,10 @@ Given(/^there is a pending leave request$/) do
   @employee.leaves << FactoryGirl.create(:leave, leave_date: Date.parse("May 8, 2014"))
 end
 
-When(/^I click on Approve$/) do
-  click_link "Approve"
+When(/^I click on (Approve|Reject)$/) do |action|
+  click_link action
 end
 
-Then(/^the leave request should be marked as approved$/) do
-  expect(page).to have_content("Approved")
+Then(/^the leave request should be marked as (approved|rejected)$/) do |status|
+  expect(page).to have_content(status.titleize)
 end
