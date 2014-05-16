@@ -1,5 +1,5 @@
 class LeavesController < ApplicationController
-  before_action :set_employee, except: [:index]
+  before_action :set_employee, except: [:index, :update]
 
   def create
     coerce_leave_date!
@@ -25,6 +25,16 @@ class LeavesController < ApplicationController
     @leaves = Leave.all
   end
 
+  def update
+    @leave = Leave.find(params[:id])
+    if @leave.update(status: enum_for(params[:status]))
+      redirect_to leaves_path
+    else
+      flash[:alert] = "Something went wrong."
+      redirect_to leaves_path
+    end
+  end
+
   private
 
     def set_employee
@@ -43,5 +53,12 @@ class LeavesController < ApplicationController
       @leave.employee_first_name = @employee.first_name
       @leave.employee_last_name = @employee.last_name
       @leave.employee_email = @employee.email
+    end
+
+    def enum_for(status)
+      case status
+      when "approve" then 1
+      when "reject" then 2
+      end
     end
 end
