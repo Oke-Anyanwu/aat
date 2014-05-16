@@ -12,3 +12,7 @@ Employee.create(email: 'ace@example.com', password: 'password',
                 password_confirmation: 'password', first_name: 'Ace', middle_name: 'Jones', last_name: "O'Base")
 
 Event.create(title: "Code review", start: Date.parse("May 9, 2014"))
+
+Employee.create(email: 'hr@example.com', password: 'password',
+                password_confirmation: 'password', first_name: 'Human', middle_name: 'Middle', last_name: 'Resources',
+                hr: true)
