@@ -1,0 +1,12 @@
+= content_for :title, "Leaves"
+
+%h3 All of the leaves
+
+%table
+  %thead
+    %tr
+      %th Employee
+      %th Leave Date
+      %th Options
+  %tbody
+    = render @leaves

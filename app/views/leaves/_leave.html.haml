@@ -1,5 +1,7 @@
-%tr{class: leave == @current_leave ? "leave-highlight" : nil}
+%tr
+  %td
+    = leave.requester.name
   %td
     = leave.leave_date.strftime("%b %-d, %Y")
   %td
-    = leave.reason
+    Approve | Reject

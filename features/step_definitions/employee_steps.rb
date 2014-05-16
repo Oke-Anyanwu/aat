@@ -94,3 +94,27 @@ Then(/^(.*?) should be blank$/) do |field|
   val = find_field(field).value
   expect(val).to be_blank
 end
+
+Given(/^there are two employees that filed separate leaves$/) do
+  @employee_1 = FactoryGirl.create(:employee)
+  @employee_1.leaves << FactoryGirl.create(:leave, leave_date: Date.parse("May 8, 2014"))
+  @employee_2 = FactoryGirl.create(:employee)
+  @employee_2.leaves << FactoryGirl.create(:leave, leave_date: Date.parse("May 9, 2014"))
+end
+
+Given(/^I am signed in as Human Resources$/) do
+  @hr = FactoryGirl.create(:hr)
+  visit "/employees/sign_in"
+  fill_in "Email", with: @hr.email
+  fill_in "Password", with: @hr.password
+  click_button "Sign In"
+end
+
+When(/^I visit the leaves page$/) do
+  visit "/leaves"
+end
+
+Then(/^I should see two leaves$/) do
+  expect(page).to have_content("May 8, 2014")
+  expect(page).to have_content("May 9, 2014")
+end
