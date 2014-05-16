@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140516015042) do
+ActiveRecord::Schema.define(version: 20140516024804) do
 
   create_table "employees", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -56,6 +56,12 @@ ActiveRecord::Schema.define(version: 20140516015042) do
     t.integer  "employee_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "employee_first_name"
+    t.string   "employee_last_name"
+    t.string   "employee_email"
+    t.string   "hr_first_name"
+    t.string   "hr_last_name"
+    t.string   "hr_email"
   end
 
   create_table "superusers", force: true do |t|

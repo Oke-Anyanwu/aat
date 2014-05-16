@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :events
 
+  resources :leaves
+
   get "monthly_events" => "monthly_events#index", as: 'monthly_events'
 
 

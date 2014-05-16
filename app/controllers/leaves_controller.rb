@@ -1,9 +1,10 @@
 class LeavesController < ApplicationController
-  before_action :set_employee
+  before_action :set_employee, except: [:index]
 
   def create
     coerce_leave_date!
     @leave = @employee.leaves.build(leave_params)
+    copy_employee_denormalized_attributes!
     respond_to do |format|
       if @leave.save
         format.html { redirect_to employee_leaves_path(@employee),
@@ -20,6 +21,10 @@ class LeavesController < ApplicationController
     end
   end
 
+  def index
+    @leaves = Leave.all
+  end
+
   private
 
     def set_employee
@@ -32,5 +37,11 @@ class LeavesController < ApplicationController
 
     def coerce_leave_date!
       params[:leave][:leave_date] = Date.strptime(params[:leave][:leave_date], "%m/%d/%Y")
+    end
+
+    def copy_employee_denormalized_attributes!
+      @leave.employee_first_name = @employee.first_name
+      @leave.employee_last_name = @employee.last_name
+      @leave.employee_email = @employee.email
     end
 end
