@@ -8,4 +8,12 @@ class Employee < ActiveRecord::Base
   has_many :leaves
 
   has_paper_trail
+
+  after_create :assign_leave_account
+
+  private
+
+    def assign_leave_account
+      self.create_leave_account
+    end
 end

@@ -1,7 +1,14 @@
-#leave-credits Leave Credits: 2.0
+%div
+  Leave Credits:
+  %span#leave-credits= @employee.leave_account.credits
 .row
   %div{ class: "large-8 columns" }
     = render "leaves_table"
 
   %div{ class: "large-4 columns" }
     = render "leave_form"
+
+.row
+  %a.button#add-credit{ href: '#', data: {reveal: {id: 'leave-credits-modal'}} } Add Credits
+
+= render 'leave_credits_modal'

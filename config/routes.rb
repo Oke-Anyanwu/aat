@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :employees
   resources :employees do
     resources :leaves
+    resources :leave_accounts
   end
 
   resources :events

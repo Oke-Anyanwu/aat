@@ -56,7 +56,7 @@ Then(/^I should see "(.*?)" as an event on the calendar$/) do |title|
 end
 
 Given(/^I have (\d+) leave credits$/) do |credits|
-  @employee.leave_account = LeaveAccount.new(credits: credits)
+  @employee.leave_account.grant(credits)
 end
 
 When(/^I click on my Leaves tab$/) do
@@ -65,9 +65,9 @@ When(/^I click on my Leaves tab$/) do
   end
 end
 
-Then(/^I should see (\d+) leave credits on my Leaves tab$/) do |arg1|
+Then(/^I should see (\d+) leave credits on my Leaves tab$/) do |credits|
   within("#leaves") do
-    expect(page).to have_content "Leave Credits: 2.0"
+    expect(page).to have_content "Leave Credits: #{credits.to_f}"
   end
 end
 
@@ -130,4 +130,28 @@ end
 
 Then(/^the leave request should be marked as (approved|rejected)$/) do |status|
   expect(page).to have_content(status.titleize)
+end
+
+Given(/^there is one employee$/) do
+  @employee = FactoryGirl.create(:employee)
+end
+
+When(/^I click on the employee's profile$/) do
+  click_link @employee.last_name
+end
+
+When(/^I grant (\d+) leave credits$/) do |credits|
+  click_link 'leave-tab'
+  click_link 'Add Credits'
+  fill_in 'Credits', with: credits
+  click_button 'Add'
+end
+
+Then(/^I should see (\d+) leave credits$/) do |credits|
+  expect(page).to have_content(credits)
+end
+
+Then(/^I should see no leave credits$/) do
+  click_link 'leave-tab'
+  expect(page).to have_content("0.0")
 end

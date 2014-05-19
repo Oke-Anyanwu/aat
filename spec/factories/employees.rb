@@ -11,7 +11,8 @@ FactoryGirl.define do
   factory :hr, class: Employee do |f|
     sequence(:email) { |n| "hr_#{n + 1}@example.com" }
     f.password "password"
-    sequence(:last_name) { |n| "last_name#{n + 1}" }
-    sequence(:first_name) { |n| "first_name#{n + 1}" }
+    sequence(:last_name) { |n| "hr_last_name#{n + 1}" }
+    sequence(:first_name) { |n| "hr_first_name#{n + 1}" }
+    hr true
   end
 end
