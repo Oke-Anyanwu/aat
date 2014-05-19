@@ -1,7 +1,7 @@
 %tr
   %td
-    = employee.last_name
+    = link_to employee.last_name, employee_path(employee)
   %td
-    = employee.first_name
+    = link_to employee.first_name, employee_path(employee)
   %td
     = employee.email

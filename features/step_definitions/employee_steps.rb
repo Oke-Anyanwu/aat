@@ -131,3 +131,22 @@ end
 Then(/^the leave request should be marked as (approved|rejected)$/) do |status|
   expect(page).to have_content(status.titleize)
 end
+
+Given(/^there is one employee$/) do
+  @employee = FactoryGirl.create(:employee)
+end
+
+When(/^I click on the employee's profile$/) do
+  click_link @employee.last_name
+end
+
+When(/^I grant (\d+) leave credits$/) do |credits|
+  click_link 'leave-tab'
+  click_link 'Add Credits'
+  fill_in 'Credits', with: credits
+  click_button 'Add'
+end
+
+Then(/^I should see (\d+) leave credits$/) do |credits|
+  expect(page).to have_content(credits)
+end

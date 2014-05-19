@@ -1,0 +1,5 @@
+$(function() {
+  $('#leave-credits').html("<%= @leave_account.credits %>");
+  $('#credits').val('');
+  $('#leave-credits-modal').foundation('reveal', 'close');
+});

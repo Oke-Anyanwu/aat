@@ -1,0 +1,5 @@
+#leave-credits-modal.reveal-modal{data: {reveal: ''}}
+  = form_tag employee_leave_account_path(@employee, @employee.leave_account), method: :patch, remote: true do
+    = label_tag :credits
+    = text_field_tag :credits
+    = submit_tag 'Add'
