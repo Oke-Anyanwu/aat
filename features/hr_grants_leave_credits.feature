@@ -8,6 +8,7 @@ Feature: HR grants leave credits
   @javascript
   Scenario: Grant 1 credit
     When I click on the employee's profile
-    And I grant 5 leave credits
+    Then I should see no leave credits
+    When I grant 5 leave credits
     Then I should see 5 leave credits
 

@@ -4,7 +4,7 @@ class LeaveAccount < ActiveRecord::Base
   has_paper_trail
 
   def grant(quantity)
-    self.credits += quantity
+    self.credits += quantity.to_f
     self.save
   end
 end

@@ -1,6 +1,6 @@
 %div
   Leave Credits:
-  %span#leave-credits 2.0
+  %span#leave-credits= @employee.leave_account.credits
 .row
   %div{ class: "large-8 columns" }
     = render "leaves_table"
