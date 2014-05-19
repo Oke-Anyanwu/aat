@@ -1,12 +1,14 @@
 = content_for :title, "Leaves"
 
-%h3 All leave requests
+.row
+  .large-12.columns
+    %h3 All leave requests
 
-%table
-  %thead
-    %tr
-      %th Employee
-      %th Leave Date
-      %th Options
-  %tbody
-    = render @leaves
+    %table.table
+      %thead
+        %tr
+          %th Employee
+          %th Leave Date
+          %th Options
+      %tbody
+        = render @leaves
