@@ -1,7 +1,13 @@
 %tr
   %td
-    = link_to employee.last_name, employee_path(employee)
+    - if current_employee.hr?
+      = link_to employee.last_name, employee_path(employee)
+    - else
+      = employee.last_name
   %td
-    = link_to employee.first_name, employee_path(employee)
+    - if current_employee.hr?
+      = link_to employee.first_name, employee_path(employee)
+    - else
+      = employee.first_name
   %td
     = employee.email

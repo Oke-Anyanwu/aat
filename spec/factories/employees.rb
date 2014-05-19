@@ -13,5 +13,6 @@ FactoryGirl.define do
     f.password "password"
     sequence(:last_name) { |n| "hr_last_name#{n + 1}" }
     sequence(:first_name) { |n| "hr_first_name#{n + 1}" }
+    hr true
   end
 end
