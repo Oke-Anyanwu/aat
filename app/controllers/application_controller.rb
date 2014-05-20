@@ -27,4 +27,14 @@ class ApplicationController < ActionController::Base
     def pundit_user
       current_employee
     end
+
+  private
+
+    def employee_not_authorized
+      @error_message = 'You are not authorized to perform this action'
+
+      respond_to do |format|
+        format.js
+      end
+    end
 end

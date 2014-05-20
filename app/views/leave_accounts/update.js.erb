@@ -1,5 +1,13 @@
-$(function() {
-  $('#leave-credits').html("<%= @leave_account.credits %>");
-  $('#credits').val('');
-  $('#leave-credits-modal').foundation('reveal', 'close');
-});
+<% if @error_message.blank? %>
+  $(function() {
+    $('#leave-credits').html("<%= @leave_account.credits %>");
+    $('#credits').val('');
+    $('#leave-credits-modal').foundation('reveal', 'close');
+  });
+<% else %>
+  $(function() {
+    $('#credits').val('');
+    $('#leave-credits-modal').foundation('reveal', 'close');
+    employeeNotAuthorized();
+  });
+<% end %>

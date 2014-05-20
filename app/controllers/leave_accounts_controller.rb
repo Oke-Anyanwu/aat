@@ -1,6 +1,7 @@
 class LeaveAccountsController < ApplicationController
   def update
     @leave_account = LeaveAccount.find(params[:id])
+    authorize @leave_account
     @leave_account.grant(params[:credits].to_f)
 
     respond_to do |format|
