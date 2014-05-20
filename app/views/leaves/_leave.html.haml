@@ -5,9 +5,12 @@
     = leave.leave_date.strftime("%b %-d, %Y")
   %td
     - if leave.pending?
-      = link_to 'Approve', leave_path(leave, status: "approve"), method: :put
-      |
-      = link_to 'Reject', leave_path(leave, status: "reject"), method: :put
+      - if current_employee.hr?
+        = link_to 'Approve', leave_path(leave, status: "approve"), method: :put
+        |
+        = link_to 'Reject', leave_path(leave, status: "reject"), method: :put
+      - else
+        Pending
     - elsif leave.approved?
       Approved
     - else

@@ -60,3 +60,4 @@ group :test do
 end
 
 gem 'fullcalendar-rails', '~> 1.6'
+gem 'pundit'

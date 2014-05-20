@@ -18,3 +18,11 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+window.employeeNotAuthorized = function() {
+  $('#not-authorized-flash').show();
+
+  setTimeout(function() {
+    $('#not-authorized-flash').fadeOut('slow');
+  }, 5000);
+};

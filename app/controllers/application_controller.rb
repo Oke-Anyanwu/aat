@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+  rescue_from Pundit::NotAuthorizedError, with: :employee_not_authorized
 
   def user_for_paper_trail
     request.env["PATH_INFO"] =~ /(employee|events)/ ? current_employee : current_superuser
@@ -18,6 +21,20 @@ class ApplicationController < ActionController::Base
       case resource
       when :superuser then new_superuser_session_path
       when :employee then new_employee_session_path
+      end
+    end
+
+    def pundit_user
+      current_employee
+    end
+
+  private
+
+    def employee_not_authorized
+      @error_message = 'You are not authorized to perform this action'
+
+      respond_to do |format|
+        format.js
       end
     end
 end
