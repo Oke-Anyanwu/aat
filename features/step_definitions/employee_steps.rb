@@ -155,3 +155,11 @@ Then(/^I should see no leave credits$/) do
   click_link 'leave-tab'
   expect(page).to have_content("0.0")
 end
+
+Given(/^there is a human resource$/) do
+  @human_resource = FactoryGirl.create(:hr)
+end
+
+Then(/^I should not be able to click on other employees' profile$/) do
+  expect(page).not_to have_link(@human_resource.last_name)
+end
