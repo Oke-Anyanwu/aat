@@ -123,6 +123,8 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pundit (0.2.3)
+      activesupport (>= 3.0.0)
     rack (1.5.2)
     rack-pjax (0.7.0)
       nokogiri (~> 1.5)
@@ -236,6 +238,7 @@ DEPENDENCIES
   jquery-rails
   paper_trail (~> 3.0.1)
   pry
+  pundit
   rails (= 4.1.1)
   rails_admin (~> 0.6)
   rspec-rails
