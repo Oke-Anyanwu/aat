@@ -1,8 +1,7 @@
 %tr
-  %td
-    = leave.requester.name
-  %td
-    = leave.leave_date.strftime("%b %-d, %Y")
+  %td= leave.requester.name
+  %td= leave.leave_date.strftime("%b %-d, %Y")
+  %td= leave.reason
   %td
     - if leave.pending?
       - if current_employee.hr?
