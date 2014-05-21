@@ -28,6 +28,9 @@ class LeavesController < ApplicationController
   def update
     @leave = Leave.find(params[:id])
     if @leave.update(status: enum_for(params[:status]))
+      if params[:status].eql?('approve')
+        Event.create(title: @leave.employee.decorate.full_name, start: @leave.leave_date)
+      end
       redirect_to leaves_path
     else
       flash[:alert] = "Something went wrong."

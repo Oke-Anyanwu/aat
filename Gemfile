@@ -61,3 +61,4 @@ end
 
 gem 'fullcalendar-rails', '~> 1.6'
 gem 'pundit'
+gem 'draper', '~> 1.3'
