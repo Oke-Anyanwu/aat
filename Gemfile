@@ -55,7 +55,7 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'rspec-rails', require: false
-  gem 'cucumber-timecop'
+  gem 'cucumber-timecop', require: false
   gem 'selenium-webdriver'
 end
 
