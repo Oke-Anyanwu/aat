@@ -1,4 +1,4 @@
-%h3 My Profile
+%h3= @employee.decorate.full_name
 
 %dl#employee-tab{ class: "tabs", data: { tab: true, options: "deep_linking: true" } }
   %dd{ class: "active" }
