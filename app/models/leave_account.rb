@@ -7,4 +7,9 @@ class LeaveAccount < ActiveRecord::Base
     self.credits += quantity.to_f
     self.save
   end
+
+  def deduct(quantity)
+    self.credits -= quantity
+    self.save
+  end
 end

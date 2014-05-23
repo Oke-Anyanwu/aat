@@ -11,6 +11,8 @@
       - else
         Pending
     - elsif leave.approved?
-      Approved
+      Approved | #{link_to 'Mark leave as taken', leave_path(leave, status: 'taken'), method: :put}
+    - elsif leave.taken?
+      Taken
     - else
       Rejected

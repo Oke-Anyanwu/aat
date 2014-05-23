@@ -30,6 +30,8 @@ class LeavesController < ApplicationController
     if @leave.update(status: enum_for(params[:status]))
       if params[:status].eql?('approve')
         Event.create(title: @leave.employee.decorate.full_name, start: @leave.leave_date)
+      elsif params[:status].eql?('taken')
+        @leave.take!
       end
       redirect_to leaves_path
     else
@@ -62,6 +64,7 @@ class LeavesController < ApplicationController
       case status
       when "approve" then 1
       when "reject" then 2
+      when "taken" then 3
       end
     end
 end
