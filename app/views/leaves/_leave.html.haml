@@ -5,9 +5,9 @@
   %td
     - if leave.pending?
       - if current_employee.hr?
-        = link_to 'Approve', leave_path(leave, status: "approve"), method: :put
+        = link_to 'Approve', leave_path(leave, status: "approved"), method: :put
         |
-        = link_to 'Reject', leave_path(leave, status: "reject"), method: :put
+        = link_to 'Reject', leave_path(leave, status: "rejected"), method: :put
       - else
         Pending
     - elsif leave.approved?

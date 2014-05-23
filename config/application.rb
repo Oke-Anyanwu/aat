@@ -24,5 +24,9 @@ module Aat
 
     config.assets.precompile += %w( employees.js leaves.js )
     config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
+
+    config.generators do |g|
+      g.test_framework :rspec
+    end
   end
 end

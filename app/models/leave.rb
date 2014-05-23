@@ -15,6 +15,15 @@ class Leave < ActiveRecord::Base
     LeaveReviewer.new(self.hr_first_name, self.hr_last_name, self.hr_email) unless self.hr_first_name.nil?
   end
 
+  def handle_status_update!
+    case self.status
+    when 'approved'
+      Event.create(title: self.employee.decorate.full_name, start: self.leave_date)
+    when 'taken'
+      self.take!
+    end
+  end
+
   def take!
     raise Exceptions::LeaveNotTakenError unless self.taken?
     self.employee.leave_account.deduct(1)
