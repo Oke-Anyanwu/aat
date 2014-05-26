@@ -19,8 +19,12 @@ class Leave < ActiveRecord::Base
     case self.status
     when 'approved'
       Event.create(title: self.employee.decorate.full_name, start: self.leave_date)
+      Resque.enqueue(ApprovedLeaveRequestNotificationJob, self.id)
+    when 'rejected'
+      Resque.enqueue(RejectedLeaveRequestNotificationJob, self.id)
     when 'taken'
       self.take!
+      Resque.enqueue(TakenLeaveRequestNotificationJob, self.id)
     end
   end
 
