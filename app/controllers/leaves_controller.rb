@@ -27,12 +27,8 @@ class LeavesController < ApplicationController
 
   def update
     @leave = Leave.find(params[:id])
-    if @leave.update(status: enum_for(params[:status]))
-      if params[:status].eql?('approve')
-        Event.create(title: @leave.employee.decorate.full_name, start: @leave.leave_date)
-      elsif params[:status].eql?('taken')
-        @leave.take!
-      end
+    if @leave.update(status: params[:status].to_sym)
+      @leave.handle_status_update!
       redirect_to leaves_path
     else
       flash[:alert] = "Something went wrong."
@@ -58,13 +54,5 @@ class LeavesController < ApplicationController
       @leave.employee_first_name = @employee.first_name
       @leave.employee_last_name = @employee.last_name
       @leave.employee_email = @employee.email
-    end
-
-    def enum_for(status)
-      case status
-      when "approve" then 1
-      when "reject" then 2
-      when "taken" then 3
-      end
     end
 end
