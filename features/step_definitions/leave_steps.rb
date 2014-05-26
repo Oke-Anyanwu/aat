@@ -9,7 +9,7 @@ Given /^I am on my Leaves tab$/ do
 end
 
 Given /^I have (\d+) leave credits$/ do |credits|
-  @employee.leave_account.grant(credits)
+  @employee.leave_account.credit(credits)
 end
 
 Given /^there are two employees that filed separate leaves$/ do

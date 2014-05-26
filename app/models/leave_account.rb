@@ -3,12 +3,12 @@ class LeaveAccount < ActiveRecord::Base
 
   has_paper_trail
 
-  def grant(quantity)
+  def credit(quantity)
     self.credits += quantity.to_f
     self.save
   end
 
-  def deduct(quantity)
+  def debit(quantity)
     self.credits -= quantity
     self.save
   end

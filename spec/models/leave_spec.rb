@@ -72,7 +72,7 @@ describe Leave do
       end
 
       it 'should invoke LeaveAccount#deduct' do
-        expect(@leave.employee.leave_account).to receive(:deduct).with(1)
+        expect(@leave.employee.leave_account).to receive(:debit).with(1)
         @leave.take!
       end
     end
