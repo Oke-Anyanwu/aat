@@ -26,6 +26,6 @@ class Leave < ActiveRecord::Base
 
   def take!
     raise Exceptions::LeaveNotTakenError unless self.taken?
-    self.employee.leave_account.deduct(1)
+    self.employee.leave_account.debit(1)
   end
 end
