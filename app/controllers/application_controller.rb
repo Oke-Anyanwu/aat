@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :employee_not_authorized
 
   def user_for_paper_trail
-    request.env["PATH_INFO"] =~ /(employee|events)/ ? current_employee : current_superuser
+    request.env["PATH_INFO"] =~ /(meta)/ ? current_superuser : current_employee
   end
 
   protected

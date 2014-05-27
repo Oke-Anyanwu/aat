@@ -1,5 +1,6 @@
 class LeavesController < ApplicationController
-  before_action :set_employee, except: [:index, :update]
+  before_action :authenticate_employee!
+  before_action :set_employee, except: [:index, :update, :show]
 
   def create
     coerce_leave_date!
@@ -26,6 +27,10 @@ class LeavesController < ApplicationController
     @leaves = Leave.all
   end
 
+  def show
+    @leave = Leave.find(params[:id])
+  end
+
   def update
     @leave = Leave.find(params[:id])
     if @leave.update(status: params[:status].to_sym)
@@ -36,6 +41,12 @@ class LeavesController < ApplicationController
       redirect_to leaves_path
     end
   end
+
+  protected
+
+    def info_for_paper_trail
+      { employee_name: current_employee.decorate.full_name }
+    end
 
   private
 

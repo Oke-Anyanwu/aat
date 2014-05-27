@@ -3,6 +3,8 @@
   %td= leave.leave_date.strftime("%b %-d, %Y")
   %td= leave.reason
   %td
+    = link_to 'View', leave_path(leave)
+    |
     - if leave.pending?
       - if current_employee.hr?
         = link_to 'Approve', leave_path(leave, status: "approved"), method: :put

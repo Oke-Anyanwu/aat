@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140527050138) do
+ActiveRecord::Schema.define(version: 20140527064229) do
 
   create_table "employees", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -46,15 +46,6 @@ ActiveRecord::Schema.define(version: 20140527050138) do
   create_table "leave_accounts", force: true do |t|
     t.float    "credits",     default: 0.0
     t.integer  "employee_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "leave_event_details", force: true do |t|
-    t.integer  "leave_event_id"
-    t.string   "employee_name"
-    t.date     "employee_date_of_leave"
-    t.string   "employee_reason"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -100,6 +91,7 @@ ActiveRecord::Schema.define(version: 20140527050138) do
     t.text     "object"
     t.datetime "created_at"
     t.text     "object_changes"
+    t.string   "employee_name"
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
