@@ -1,0 +1,23 @@
+= content_for :title, "Leave for #{@leave.employee.decorate.full_name}"
+
+.row
+  .small-12.column
+    %dl
+      %dt Leave Date
+      %dd= @leave.leave_date
+      %dt Reason
+      %dd= @leave.reason
+
+.row
+  .small-12.column
+    %h2 History
+    %table
+      %thead
+        %tr
+          %th Time
+          %th Activity
+      %tbody
+        - @leave.versions.reverse.each do |version|
+          %tr
+            %td= version.decorate.created_at
+            %td= @leave.decorate.notification_message(version)

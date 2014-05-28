@@ -6,6 +6,7 @@ describe LeavesController do
     let!(:leave) { FactoryGirl.create(:leave, id: 1) }
 
     before do
+      login_employee(employee)
       Employee.stub(:find).and_return(employee)
       employee.stub_chain(:leaves, :build).and_return(leave)
     end
