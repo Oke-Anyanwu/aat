@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :employee_not_authorized
 
+  before_filter :authenticate_employee!
+
   def user_for_paper_trail
     request.env["PATH_INFO"] =~ /(meta)/ ? current_superuser : current_employee
   end
