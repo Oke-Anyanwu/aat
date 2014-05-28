@@ -59,7 +59,13 @@ group :test do
   gem 'selenium-webdriver'
 end
 
+group :development do
+  gem 'letter_opener'
+end
+
 gem 'fullcalendar-rails', '~> 1.6'
 gem 'pundit'
 gem 'draper', '~> 1.3'
 gem 'unicorn'
+gem 'resque'
+gem 'figaro'

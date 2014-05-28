@@ -36,4 +36,6 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.action_mailer.default_options = { from: "no-reply@aelogica.com", to: "test@aelogica.com" }
 end

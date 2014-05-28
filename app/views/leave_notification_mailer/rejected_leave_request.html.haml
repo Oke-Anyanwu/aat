@@ -1,0 +1,10 @@
+%p #{@leave.employee.decorate.full_name},
+%p
+  We regret to inform you, but your leave request has been rejected.
+  Here are the details you provided:
+
+%dl
+  %dt Leave Date:
+  %dd= @leave.decorate.leave_date
+  %dt Reason:
+  %dd= @leave.reason

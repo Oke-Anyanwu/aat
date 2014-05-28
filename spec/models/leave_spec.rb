@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Leave do
   before do
-    @employee = FactoryGirl.create(:employee, first_name: 'Annie', middle_name: 'Danger', last_name: 'Batumbakal')
+    @employee = FactoryGirl.create(:employee, first_name: 'Annie', middle_name: 'Danger', last_name: 'Batumbakal', email: 'annie@batumbakal.com')
   end
 
   describe '#requester' do
@@ -36,10 +36,26 @@ describe Leave do
 
   describe '#handle_status_update!' do
     context 'when status is approved' do
-      it 'should create a new event' do
-        @leave = FactoryGirl.create(:leave, employee_id: @employee.id, status: :approved)
+      before do
+        @leave = FactoryGirl.create(:leave, id: 1, employee_id: @employee.id, status: :approved)
+      end
 
+      it 'should create a new event' do
         expect(Event).to receive(:create).with(title: 'Annie Danger Batumbakal', start: @leave.leave_date)
+        @leave.handle_status_update!
+      end
+
+      it 'adds ApprovedLeaveRequestNotificationJob to the queue' do
+        expect(Resque).to receive(:enqueue).with(ApprovedLeaveRequestNotificationJob, 1)
+        @leave.handle_status_update!
+      end
+    end
+
+    context 'when status is rejected' do
+      it 'adds RejectedLeaveRequestNotificationJob to the queue' do
+        @leave = FactoryGirl.create(:leave, id: 1, employee_id: @employee.id, status: :rejected)
+
+        expect(Resque).to receive(:enqueue).with(RejectedLeaveRequestNotificationJob, 1)
         @leave.handle_status_update!
       end
     end
@@ -49,6 +65,13 @@ describe Leave do
         @leave = FactoryGirl.create(:leave, employee_id: @employee.id, status: :taken)
 
         expect(@leave).to receive(:take!)
+        @leave.handle_status_update!
+      end
+
+      it 'adds TakenLeaveRequestNotificationJob to the queue' do
+        @leave = FactoryGirl.create(:leave, id: 1, employee_id: @employee.id, status: :taken)
+
+        expect(Resque).to receive(:enqueue).with(TakenLeaveRequestNotificationJob, 1)
         @leave.handle_status_update!
       end
     end

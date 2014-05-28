@@ -1,0 +1,10 @@
+%h2 There is a new leave request waiting to be approved by you
+%h3 Leave Details:
+%dl
+  %dt Employee:
+  %dd= @leave.employee.decorate.full_name
+  %dt Leave Date:
+  %dd= @leave.decorate.leave_date
+  %dt Reason:
+  %dd= @leave.reason
+%p To approve or reject this leave request, please go #{link_to('here', leaves_url)}

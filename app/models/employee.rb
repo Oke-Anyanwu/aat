@@ -11,6 +11,8 @@ class Employee < ActiveRecord::Base
 
   after_create :assign_leave_account
 
+  scope :human_resources, -> { where(hr: true) }
+
   private
 
     def assign_leave_account

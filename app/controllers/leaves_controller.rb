@@ -7,6 +7,7 @@ class LeavesController < ApplicationController
     copy_employee_denormalized_attributes!
     respond_to do |format|
       if @leave.save
+        Resque.enqueue(NewLeaveRequestNotificationJob, @leave.id)
         format.html { redirect_to employee_leaves_path(@employee),
                       notice: 'Your request was sent.' }
         format.js { @current_leave = @leave }

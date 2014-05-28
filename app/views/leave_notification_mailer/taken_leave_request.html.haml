@@ -1,0 +1,11 @@
+%p #{@leave.employee.decorate.full_name},
+%p
+  One of your approved leave requests have been marked as taken.
+  This means that your number of leaves will be reduced by 1
+  Here are the details you provided:
+
+%dl
+  %dt Leave Date:
+  %dd= @leave.decorate.leave_date
+  %dt Reason:
+  %dd= @leave.reason
