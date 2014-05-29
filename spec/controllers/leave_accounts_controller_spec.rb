@@ -6,7 +6,7 @@ describe LeaveAccountsController do
     let!(:hr) { FactoryGirl.create(:hr) }
 
     before do
-      controller.stub(:current_employee).and_return(hr)
+      login_employee(hr)
     end
 
     context 'when leave credits have successfully been granted' do

@@ -1,5 +1,4 @@
 class LeavesController < ApplicationController
-  before_action :authenticate_employee!
   before_action :set_employee, except: [:index, :update, :show]
 
   def create
