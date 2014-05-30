@@ -14,6 +14,12 @@ I created this project to document the steps I took to setup a back-office appli
 
 ### Testing and debugging gems
 
+We're using [SimpleCov](https://github.com/colszowka/simplecov) for test coverage reports
+
+1. Run tests using `rake spec cucumber`
+
+2. `$ open coverage/index.html`
+
 ### Principles
 
 1. Do not reinvent the wheel. I think most of what I need for this app is already built. What I need to do is to build a cohesive user interface.

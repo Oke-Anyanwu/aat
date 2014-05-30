@@ -57,6 +57,7 @@ group :test do
   gem 'rspec-rails', require: false
   gem 'cucumber-timecop', require: false
   gem 'selenium-webdriver'
+  gem 'simplecov', '~> 0.7.1', require: false
 end
 
 group :development do
