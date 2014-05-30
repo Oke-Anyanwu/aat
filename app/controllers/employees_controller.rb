@@ -15,7 +15,7 @@ class EmployeesController < ApplicationController
       redirect_to employee_path(@employee)
     else
       flash[:alert] = "Profile not updated."
-      render :show
+      render action: :show
     end
   end
 
